@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import Slider from "./slider"
+import Toggle from "./toggle"
 import { rhythm, scale } from "../utils/typography"
 
 const Layout = ({ children, location, title }) => {
@@ -61,7 +61,7 @@ const Layout = ({ children, location, title }) => {
     >
       <header style={{ display: "flex", justifyContent: "space-between" }}>
         {header}
-        <Slider />
+        <Toggle />
       </header>
       <main>{children}</main>
       <footer>

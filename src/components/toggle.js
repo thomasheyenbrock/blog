@@ -5,7 +5,7 @@ const sunPath =
 const moonPath =
   "M0,-12 C 3.14,-12 6.26,-10.7 8.48,-8.48 C 10.7,-6.26 12,-3.14 12,0 C 12,3.14 10.7,6.26 8.48,8.48 C 6.26,10.7 3.14,12 0,12 C 3,9.5 3.25,9 4.55,7 C 5.7,5 6.3,2 6.3,0 C 6.3,-2 5.7,-5 4.55,-7 C 3.25,-9 3,-9.5 0,-12"
 
-const Slider = () => {
+const Toggle = () => {
   const [theme, changeTheme] = useReducer(theme => {
     const newTheme = theme === "light" ? "dark" : "light"
     localStorage.setItem("theme", newTheme)
@@ -228,24 +228,7 @@ const Slider = () => {
         transform="rotate(330)"
       />
     </svg>
-    // <div>
-    //   <label htmlFor={id} className="slider-background">
-    //     <div className="slider-icon">
-    //       <span>🌑</span>
-    //       <span>☀️</span>
-    //     </div>
-    //     <div className={`slider-circle slider-circle-${theme}`} />
-    //   </label>
-    //   <input
-    //     aria-label="Choose between light and dark theme"
-    //     checked={theme !== "light"}
-    //     className="slider-input"
-    //     id={id}
-    //     onChange={changeTheme}
-    //     type="checkbox"
-    //   />
-    // </div>
   )
 }
 
-export default Slider
+export default Toggle
