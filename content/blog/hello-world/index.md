@@ -5,6 +5,24 @@ date: "2015-05-01T22:12:03.284Z"
 
 This is my first post on my new fake blog! How exciting!
 
+```jsx{2-4}
+class Button extends React.Component {
+  state = {
+    color: this.props.color,
+  }
+  render() {
+    const { color } = this.state // 🔴 `color` is stale!
+    return <button className="goo">
+      {this.props.children}
+    </button>
+  }
+}
+
+function foo() {
+  return [true, 42, "World"]
+}
+```
+
 I'm sure I'll write a lot more interesting things in the future.
 
 Oh, and here's a great quote from this Wikipedia on
