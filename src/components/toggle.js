@@ -1,18 +1,12 @@
-import React, { useReducer } from "react"
+import PropTypes from "prop-types"
+import React from "react"
 
 const sunPath =
   "M0,-12 C 2,-5 2,-5 10,-10 C 5,-2 5,-2 12,0 C 5,2 5,2 10,10 C 2,5 2,5 0,12 C -2,5 -2,5 -10,10 C -5,2 -5,2 -12,0 C -5,-2 -5,-2 -10,-10 C -2,-5 -2,-5 0,-12"
 const moonPath =
   "M0,-12 C 3.14,-12 6.26,-10.7 8.48,-8.48 C 10.7,-6.26 12,-3.14 12,0 C 12,3.14 10.7,6.26 8.48,8.48 C 6.26,10.7 3.14,12 0,12 C 3,9.5 3.25,9 4.55,7 C 5.7,5 6.3,2 6.3,0 C 6.3,-2 5.7,-5 4.55,-7 C 3.25,-9 3,-9.5 0,-12"
 
-const Toggle = () => {
-  const [theme, changeTheme] = useReducer(theme => {
-    const newTheme = theme === "light" ? "dark" : "light"
-    localStorage.setItem("theme", newTheme)
-    document.body.classList.remove(`theme-${theme}`)
-    document.body.classList.add(`theme-${newTheme}`)
-    return newTheme
-  }, localStorage.getItem("theme") || "light")
+const Toggle = ({ theme, changeTheme }) => {
   const time = new Date()
   const minuteRotation = (360 * time.getMinutes()) / 60
   const hourRotation = (360 * (time.getHours() % 12)) / 12 + minuteRotation / 12
@@ -229,6 +223,11 @@ const Toggle = () => {
       />
     </svg>
   )
+}
+
+Toggle.propTypes = {
+  theme: PropTypes.oneOf(["light", "dark"]).isRequired,
+  changeTheme: PropTypes.func.isRequired,
 }
 
 export default Toggle

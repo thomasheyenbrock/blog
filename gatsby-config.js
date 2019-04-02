@@ -1,10 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `My Blog`,
+    title: `Thomas Heyenbrock`,
     author: `Thomas Heyenbrock`,
-    description: `My personal blog about all kinds of stuff...but mostly about tech.`,
-    siteUrl: `https://blog.thomasheyenbrock.com/`,
+    description: `My personal website containing all my work and my blog.`,
+    siteUrl: `https://thomasheyenbrock.com/`,
     social: {
+      github: `thomasheyenbrock`,
       twitter: `heyenbrock`,
     },
   },
@@ -74,5 +75,6 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    `gatsby-plugin-styled-components`,
   ],
 }
