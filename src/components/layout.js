@@ -1,47 +1,12 @@
-import { Link } from "gatsby"
 import React, { useEffect, useState } from "react"
-import styled from "styled-components"
+import PropTypes from "prop-types"
 
 import Theme from "./theme"
-import Toggle from "./toggle"
-import { rhythm, scale } from "../utils/typography"
 import GlobalStyles from "./globalStyle"
+import Container from "./container"
+import Header from "./header"
 
-const Container = styled.div`
-  margin-left: auto;
-  margin-right: auto;
-  max-width: ${rhythm(24)};
-  padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
-`
-
-const Header = styled.header`
-  display: flex;
-  justify-content: space-between;
-`
-
-const StyledLink = styled(Link)`
-  box-shadow: none;
-  text-decoration: none;
-  color: inherit;
-`
-
-const h1Scale = scale(1.5)
-const StyledH1 = styled.h1`
-  font-size: ${h1Scale.fontSize};
-  line-height: ${h1Scale.lineHeight};
-  margin-bottom: ${rhythm(1.5)};
-  margin-top: 0;
-`
-
-const StyledH3 = styled.h3`
-  font-family: Montserrat, sans-serif;
-  margin-top: 0;
-`
-
-const Layout = ({ children, location, title }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
-  let header
-
+const Layout = ({ children, title }) => {
   const [theme, setTheme] = useState(null)
 
   useEffect(() => {
@@ -49,32 +14,22 @@ const Layout = ({ children, location, title }) => {
     window.__onThemeChange = setTheme
   }, [])
 
-  if (location.pathname === rootPath) {
-    header = (
-      <StyledH1>
-        <StyledLink to={`/`}>{title}</StyledLink>
-      </StyledH1>
-    )
-  } else {
-    header = (
-      <StyledH3>
-        <StyledLink to={`/`}>{title}</StyledLink>
-      </StyledH3>
-    )
-  }
   return (
     <Theme value={theme}>
-      <Container>
+      <>
         <GlobalStyles />
-        <Header>
-          {header}
-          <Toggle theme={theme} />
-        </Header>
-        <main>{children}</main>
+        <Header title={title} theme={theme} />
+        <main>
+          <Container>{children}</Container>
+        </main>
         <footer>© {new Date().getFullYear()}</footer>
-      </Container>
+      </>
     </Theme>
   )
+}
+
+Layout.propTypes = {
+  title: PropTypes.string.isRequired,
 }
 
 export default Layout

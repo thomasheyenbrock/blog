@@ -29,8 +29,8 @@ const Toggle = ({ theme }) => {
   return (
     <StyledSvg
       id="clock"
-      height="64"
-      width="64"
+      height="48"
+      width="48"
       viewBox="-20 -20 40 40"
       onClick={() =>
         window.__setPreferredTheme(theme === "light" ? "dark" : "light")

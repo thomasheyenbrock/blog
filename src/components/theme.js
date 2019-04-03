@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { ThemeProvider } from "styled-components"
+import { rhythm } from "../utils/typography"
 
 const colors = {
   grey: {
@@ -122,7 +123,17 @@ const code = {
   tag: colors.orange[700],
 }
 
+const mobileBreakpoint = rhythm(24)
+
+const baseTheme = {
+  code,
+  colors,
+  mobileBreakpoint,
+  transition,
+}
+
 const lightTheme = {
+  ...baseTheme,
   body: {
     background: colors.grey[900],
     color: colors.grey[50],
@@ -134,12 +145,14 @@ const lightTheme = {
   link: {
     color: colors.grey[200],
   },
-  code,
-  colors,
-  transition,
+  header: {
+    background: colors.blue[300],
+    color: colors.grey[900],
+  },
 }
 
 const darkTheme = {
+  ...baseTheme,
   body: {
     background: colors.grey[100],
     color: colors.grey[900],
@@ -151,9 +164,10 @@ const darkTheme = {
   link: {
     color: colors.grey[700],
   },
-  code,
-  colors,
-  transition,
+  header: {
+    background: colors.blue[600],
+    color: colors.grey[50],
+  },
 }
 
 const Theme = ({ children, value }) => {

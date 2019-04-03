@@ -3,10 +3,9 @@ import { graphql } from "gatsby"
 
 import SEO from "../components/seo"
 
-const BlogIndex = () => (
+const About = () => (
   <SEO
-    title="Thomas Heyenbrock"
-    useExactTitle
+    title="About"
     keywords={[
       `blog`,
       `gatsby`,
@@ -18,7 +17,7 @@ const BlogIndex = () => (
   />
 )
 
-export default BlogIndex
+export default About
 
 export const pageQuery = graphql`
   query {
