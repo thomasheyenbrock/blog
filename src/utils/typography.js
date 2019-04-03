@@ -1,8 +1,6 @@
 import Typography from "typography"
 import ElkGlen from "typography-theme-elk-glen"
 
-import "./global.css"
-
 const typography = new Typography(ElkGlen)
 
 // Hot reload typography in development.

@@ -45,8 +45,6 @@ const Layout = ({ children, location, title }) => {
   const [theme, changeTheme] = useReducer(theme => {
     const newTheme = theme === "light" ? "dark" : "light"
     localStorage.setItem("theme", newTheme)
-    document.body.classList.remove(`theme-${theme}`)
-    document.body.classList.add(`theme-${newTheme}`)
     return newTheme
   }, localStorage.getItem("theme") || "light")
 

@@ -127,6 +127,13 @@ const lightTheme = {
     background: colors.grey[900],
     color: colors.grey[50],
   },
+  blockquote: {
+    borderLeft: colors.grey[200],
+    color: colors.grey[200],
+  },
+  link: {
+    color: colors.grey[200],
+  },
   code,
   colors,
   transition,
@@ -136,6 +143,13 @@ const darkTheme = {
   body: {
     background: colors.grey[100],
     color: colors.grey[900],
+  },
+  blockquote: {
+    borderLeft: colors.grey[700],
+    color: colors.grey[700],
+  },
+  link: {
+    color: colors.grey[700],
   },
   code,
   colors,

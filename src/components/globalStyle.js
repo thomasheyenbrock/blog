@@ -83,6 +83,41 @@ const GlobalStyles = createGlobalStyle`
       }
     }
   }
+
+  blockquote {
+    border-left-color: ${props => props.theme.blockquote.borderLeft};
+    transition: ${props => props.theme.transition};
+
+    p {
+      color: ${props => props.theme.blockquote.color};
+      transition: ${props => props.theme.transition};
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: ${props => props.theme.body.color};
+    transition: ${props => props.theme.transition};
+  }
+
+
+  a {
+    text-shadow: none;
+    color: ${props => props.theme.link.color};
+    background-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0) 1px,
+      ${props => props.theme.link.color} 1px,
+      ${props => props.theme.link.color} 2px,
+      rgba(0, 0, 0, 0) 2px
+    );
+    transition: ${props => props.theme.transition};
+  }
 `
 
 export default GlobalStyles

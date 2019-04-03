@@ -1,5 +1,18 @@
 import PropTypes from "prop-types"
 import React from "react"
+import styled from "styled-components"
+
+const StyledSvg = styled.svg`
+  color: ${props => props.theme.colors.grey[50]};
+`
+
+const StyledCircle = styled.circle`
+  fill: ${props => props.theme.colors.grey[500]};
+`
+
+const StyledPath = styled.path`
+  fill: ${props => props.theme.colors.yellow[400]};
+`
 
 const sunPath =
   "M0,-12 C 2,-5 2,-5 10,-10 C 5,-2 5,-2 12,0 C 5,2 5,2 10,10 C 2,5 2,5 0,12 C -2,5 -2,5 -10,10 C -5,2 -5,2 -12,0 C -5,-2 -5,-2 -10,-10 C -2,-5 -2,-5 0,-12"
@@ -12,25 +25,23 @@ const Toggle = ({ theme, changeTheme }) => {
   const hourRotation = (360 * (time.getHours() % 12)) / 12 + minuteRotation / 12
 
   return (
-    <svg
+    <StyledSvg
       id="clock"
       height="64"
       width="64"
       viewBox="-20 -20 40 40"
       onClick={changeTheme}
     >
-      <circle
+      <StyledCircle
         cx="0"
         cy="0"
         r="19"
         fill="none"
         strokeWidth="2"
         stroke="currentcolor"
-        className="clock-background"
       />
-      <path
-        className="clock-sun-moon"
-        d={theme === "dark" ? moonPath : moonPath}
+      <StyledPath
+        d={theme === "dark" ? moonPath : sunPath}
         transform={`rotate(${theme === "dark" ? "20" : "0"})`}
       >
         <animate
@@ -56,7 +67,7 @@ const Toggle = ({ theme, changeTheme }) => {
           keyTimes="0;0.5"
           keySplines="0.25 0.1 0.25 1"
         />
-      </path>
+      </StyledPath>
       <rect
         x="-1"
         y="-13"
@@ -221,7 +232,7 @@ const Toggle = ({ theme, changeTheme }) => {
         fill="currentcolor"
         transform="rotate(330)"
       />
-    </svg>
+    </StyledSvg>
   )
 }
 
