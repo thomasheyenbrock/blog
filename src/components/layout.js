@@ -1,5 +1,5 @@
 import { Link } from "gatsby"
-import React, { useReducer } from "react"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 
 import Theme from "./theme"
@@ -42,11 +42,12 @@ const Layout = ({ children, location, title }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   let header
 
-  const [theme, changeTheme] = useReducer(theme => {
-    const newTheme = theme === "light" ? "dark" : "light"
-    localStorage.setItem("theme", newTheme)
-    return newTheme
-  }, localStorage.getItem("theme") || "light")
+  const [theme, setTheme] = useState(null)
+
+  useEffect(() => {
+    setTheme(window.__theme)
+    window.__onThemeChange = setTheme
+  }, [])
 
   if (location.pathname === rootPath) {
     header = (
@@ -67,7 +68,7 @@ const Layout = ({ children, location, title }) => {
         <GlobalStyles />
         <Header>
           {header}
-          <Toggle theme={theme} changeTheme={changeTheme} />
+          <Toggle theme={theme} />
         </Header>
         <main>{children}</main>
         <footer>© {new Date().getFullYear()}</footer>

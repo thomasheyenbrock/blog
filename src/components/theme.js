@@ -156,14 +156,18 @@ const darkTheme = {
   transition,
 }
 
-const Theme = ({ children, value }) => (
-  <ThemeProvider theme={value === "light" ? lightTheme : darkTheme}>
-    {children}
-  </ThemeProvider>
-)
+const Theme = ({ children, value }) => {
+  if (!value) return null
+
+  return (
+    <ThemeProvider theme={value === "light" ? lightTheme : darkTheme}>
+      {children}
+    </ThemeProvider>
+  )
+}
 
 Theme.propTypes = {
-  value: PropTypes.oneOf(["light", "dark"]).isRequired,
+  value: PropTypes.oneOf(["light", "dark"]),
 }
 
 export default Theme

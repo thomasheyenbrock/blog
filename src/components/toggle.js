@@ -19,7 +19,9 @@ const sunPath =
 const moonPath =
   "M0,-12 C 3.14,-12 6.26,-10.7 8.48,-8.48 C 10.7,-6.26 12,-3.14 12,0 C 12,3.14 10.7,6.26 8.48,8.48 C 6.26,10.7 3.14,12 0,12 C 3,9.5 3.25,9 4.55,7 C 5.7,5 6.3,2 6.3,0 C 6.3,-2 5.7,-5 4.55,-7 C 3.25,-9 3,-9.5 0,-12"
 
-const Toggle = ({ theme, changeTheme }) => {
+const Toggle = ({ theme }) => {
+  if (!theme) return null
+
   const time = new Date()
   const minuteRotation = (360 * time.getMinutes()) / 60
   const hourRotation = (360 * (time.getHours() % 12)) / 12 + minuteRotation / 12
@@ -30,7 +32,9 @@ const Toggle = ({ theme, changeTheme }) => {
       height="64"
       width="64"
       viewBox="-20 -20 40 40"
-      onClick={changeTheme}
+      onClick={() =>
+        window.__setPreferredTheme(theme === "light" ? "dark" : "light")
+      }
     >
       <StyledCircle
         cx="0"
@@ -237,8 +241,7 @@ const Toggle = ({ theme, changeTheme }) => {
 }
 
 Toggle.propTypes = {
-  theme: PropTypes.oneOf(["light", "dark"]).isRequired,
-  changeTheme: PropTypes.func.isRequired,
+  theme: PropTypes.oneOf(["light", "dark"]),
 }
 
 export default Toggle
