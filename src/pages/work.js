@@ -3,15 +3,21 @@ import { graphql } from "gatsby"
 
 import { SEO } from "../components/seo"
 
-const NotFoundPage = () => (
-  <>
-    <SEO title="404: Not Found" />
-    <h1>Not Found</h1>
-    <p>You just hit a route that doesn&#39;t exist...</p>
-  </>
+const Work = () => (
+  <SEO
+    title="My Work"
+    keywords={[
+      `blog`,
+      `gatsby`,
+      `javascript`,
+      `react`,
+      `power bi`,
+      `data science`,
+    ]}
+  />
 )
 
-export default NotFoundPage
+export default Work
 
 export const pageQuery = graphql`
   query {

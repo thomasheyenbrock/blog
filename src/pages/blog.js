@@ -1,9 +1,8 @@
-import React from "react"
 import { Link, graphql } from "gatsby"
+import React from "react"
 
-import Bio from "../components/bio"
-import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+import { SEO } from "../components/seo"
+import { StyledHeading, StyledSubHeading } from "../components/heading"
 
 const Blog = ({ data }) => {
   const posts = data.allMarkdownRemark.edges
@@ -21,30 +20,17 @@ const Blog = ({ data }) => {
           `data science`,
         ]}
       />
-      <Bio />
+      <StyledHeading>Blog</StyledHeading>
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
-          <div key={node.fields.slug}>
-            <h3
-              style={{
-                marginBottom: rhythm(1 / 4),
-              }}
-            >
-              <Link
-                style={{ boxShadow: `none` }}
-                to={`/blog${node.fields.slug}`}
-              >
-                {title}
-              </Link>
-            </h3>
+          <>
+            <StyledSubHeading>
+              <Link to={`/blog${node.fields.slug}`}>{title}</Link>
+            </StyledSubHeading>
             <small>{node.frontmatter.date}</small>
-            <p
-              dangerouslySetInnerHTML={{
-                __html: node.frontmatter.description || node.excerpt,
-              }}
-            />
-          </div>
+            <p>{node.frontmatter.description || node.excerpt}</p>
+          </>
         )
       })}
     </>

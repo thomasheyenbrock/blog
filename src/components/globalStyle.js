@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components"
 
-const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
   body {
     background-color: ${props => props.theme.body.background};
     color: ${props => props.theme.body.color};
@@ -102,6 +102,11 @@ const GlobalStyles = createGlobalStyle`
   h6 {
     color: ${props => props.theme.body.color};
     transition: ${props => props.theme.transition};
+
+    a {
+      color: ${props => props.theme.body.color};
+      transition: ${props => props.theme.transition};
+    }
   }
 
 
@@ -118,6 +123,8 @@ const GlobalStyles = createGlobalStyle`
     );
     transition: ${props => props.theme.transition};
   }
-`
 
-export default GlobalStyles
+  .gatsby-resp-image-link {
+    background-image: none;
+  }
+`

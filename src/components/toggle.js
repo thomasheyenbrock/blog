@@ -1,9 +1,9 @@
-import PropTypes from "prop-types"
-import React from "react"
-import styled from "styled-components"
+import React, { useContext } from "react"
+import styled, { ThemeContext } from "styled-components"
 
 const StyledSvg = styled.svg`
   color: ${props => props.theme.colors.grey[50]};
+  cursor: pointer;
 `
 
 const StyledCircle = styled.circle`
@@ -19,8 +19,8 @@ const sunPath =
 const moonPath =
   "M0,-12 C 3.14,-12 6.26,-10.7 8.48,-8.48 C 10.7,-6.26 12,-3.14 12,0 C 12,3.14 10.7,6.26 8.48,8.48 C 6.26,10.7 3.14,12 0,12 C 3,9.5 3.25,9 4.55,7 C 5.7,5 6.3,2 6.3,0 C 6.3,-2 5.7,-5 4.55,-7 C 3.25,-9 3,-9.5 0,-12"
 
-const Toggle = ({ theme }) => {
-  if (!theme) return null
+export const Toggle = () => {
+  const { value: theme } = useContext(ThemeContext)
 
   const time = new Date()
   const minuteRotation = (360 * time.getMinutes()) / 60
@@ -240,8 +240,4 @@ const Toggle = ({ theme }) => {
   )
 }
 
-Toggle.propTypes = {
-  theme: PropTypes.oneOf(["light", "dark"]),
-}
-
-export default Toggle
+Toggle.propTypes = {}

@@ -1,12 +1,9 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "thomasheyenbrock.com",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "My personal website containing all my work and my blog.",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
-  },
+  "author": "Thomas Heyenbrock <thomas.heyenbrock@gmail.com>",
   "dependencies": {
     "babel-plugin-styled-components": "1.10.0",
     "gatsby": "2.3.2",
@@ -41,7 +38,7 @@
     "prettier": "1.16.4",
     "rimraf": "2.6.3"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://github.com/thomasheyenbrock/thomasheyenbrock.com#readme",
   "keywords": [
     "gatsby"
   ],
@@ -49,14 +46,14 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/thomasheyenbrock/thpmasheyenbrock.com.git"
   },
   "scripts": {
     "build": "gatsby build",
+    "clear": "rimraf -r .cache",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "rimraf -r .cache && npm run develop",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "start": "npm run clear && npm run develop",
+    "serve": "gatsby serve"
   }
 }

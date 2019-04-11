@@ -1,11 +1,29 @@
-import React from "react"
 import { Link, graphql } from "gatsby"
+import React from "react"
+import styled from "styled-components"
 
-import Bio from "../components/bio"
-import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography"
+import { StyledHeading } from "../components/heading"
+import { SEO } from "../components/seo"
+import { rhythm } from "../utils/typography"
 
-const BlogPostTemplate = ({ data, location, pageContext }) => {
+const StyledTextContainer = styled.div`
+  margin-top: ${rhythm(1)};
+`
+
+const StyledDivider = styled.hr`
+  margin-bottom: ${rhythm(1)};
+`
+
+const StyledList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`
+
+const BlogPostTemplate = ({ data, pageContext }) => {
   const post = data.markdownRemark
   const { previous, next } = pageContext
 
@@ -15,34 +33,12 @@ const BlogPostTemplate = ({ data, location, pageContext }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <h1>{post.frontmatter.title}</h1>
-      <p
-        style={{
-          ...scale(-1 / 5),
-          display: `block`,
-          marginBottom: rhythm(1),
-          marginTop: rhythm(-1),
-        }}
-      >
-        {post.frontmatter.date}
-      </p>
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
-      <hr
-        style={{
-          marginBottom: rhythm(1),
-        }}
-      />
-      <Bio />
-
-      <ul
-        style={{
-          display: `flex`,
-          flexWrap: `wrap`,
-          justifyContent: `space-between`,
-          listStyle: `none`,
-          padding: 0,
-        }}
-      >
+      <Link to={`/blog`}>← back</Link>
+      <StyledHeading>{post.frontmatter.title}</StyledHeading>
+      <small>{post.frontmatter.date}</small>
+      <StyledTextContainer dangerouslySetInnerHTML={{ __html: post.html }} />
+      <StyledDivider />
+      <StyledList>
         <li>
           {previous && (
             <Link to={`/blog${previous.fields.slug}`} rel="prev">
@@ -57,7 +53,7 @@ const BlogPostTemplate = ({ data, location, pageContext }) => {
             </Link>
           )}
         </li>
-      </ul>
+      </StyledList>
     </>
   )
 }

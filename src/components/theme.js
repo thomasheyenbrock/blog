@@ -134,6 +134,7 @@ const baseTheme = {
 
 const lightTheme = {
   ...baseTheme,
+  value: "light",
   body: {
     background: colors.grey[900],
     color: colors.grey[50],
@@ -146,13 +147,14 @@ const lightTheme = {
     color: colors.grey[200],
   },
   header: {
-    background: colors.blue[300],
+    background: colors.blue[200],
     color: colors.grey[900],
   },
 }
 
 const darkTheme = {
   ...baseTheme,
+  value: "dark",
   body: {
     background: colors.grey[100],
     color: colors.grey[900],
@@ -170,18 +172,12 @@ const darkTheme = {
   },
 }
 
-const Theme = ({ children, value }) => {
-  if (!value) return null
-
-  return (
-    <ThemeProvider theme={value === "light" ? lightTheme : darkTheme}>
-      {children}
-    </ThemeProvider>
-  )
-}
+export const Theme = ({ children, value }) => (
+  <ThemeProvider theme={value === "light" ? lightTheme : darkTheme}>
+    {children}
+  </ThemeProvider>
+)
 
 Theme.propTypes = {
-  value: PropTypes.oneOf(["light", "dark"]),
+  value: PropTypes.oneOf(["light", "dark"]).isRequired,
 }
-
-export default Theme
