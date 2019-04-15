@@ -5,7 +5,7 @@ import styled from "styled-components"
 
 import { rhythm } from "../utils/typography"
 import { Container } from "./container"
-import { GithubIcon, NpmIcon, TwitterIcon } from "./icons"
+import { EmailIcon, GithubIcon, TwitterIcon } from "./icons"
 
 const StyledFooter = styled.footer`
   background: ${props => props.theme.header.background};
@@ -21,12 +21,12 @@ const StyledFooterContainer = styled(Container)`
 const StyledContentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
 `
 
 const StyledIconContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 `
 
 const StyledImage = styled(Image)`
@@ -36,6 +36,10 @@ const StyledImage = styled(Image)`
     height: ${rhythm(5)};
     width: ${rhythm(5)};
   }
+`
+
+const StyledLink = styled.a`
+  background-image: none;
 `
 
 const authorQuery = graphql`
@@ -51,8 +55,8 @@ const authorQuery = graphql`
       siteMetadata {
         author
         social {
+          email
           github
-          npm
           twitter
         }
       }
@@ -74,39 +78,34 @@ export const Footer = () => (
               imgStyle={{ borderRadius: `50%` }}
             />
             <StyledContentContainer>
-              © {new Date().getFullYear()}, {author}
               <StyledIconContainer>
-                <a
+                <StyledLink
+                  href={`mailto:${data.site.siteMetadata.social.email}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <EmailIcon />
+                </StyledLink>
+                <StyledLink
                   href={`https://github.com/${
                     data.site.siteMetadata.social.github
                   }`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ backgroundImage: "none" }}
                 >
                   <GithubIcon />
-                </a>
-                <a
+                </StyledLink>
+                <StyledLink
                   href={`https://twitter.com/${
                     data.site.siteMetadata.social.twitter
                   }`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ backgroundImage: "none" }}
                 >
                   <TwitterIcon />
-                </a>
-                <a
-                  href={`https://www.npmjs.com/settings/${
-                    data.site.siteMetadata.social.npm
-                  }/packages`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ backgroundImage: "none" }}
-                >
-                  <NpmIcon />
-                </a>
+                </StyledLink>
               </StyledIconContainer>
+              © {new Date().getFullYear()}, {author}
             </StyledContentContainer>
           </StyledFooterContainer>
         </StyledFooter>

@@ -5,8 +5,8 @@ module.exports = {
     description: `My personal website containing all my work and my blog.`,
     siteUrl: `https://thomasheyenbrock.com/`,
     social: {
+      email: `thomas.heyenbrock@gmail.com`,
       github: `thomasheyenbrock`,
-      npm: `thomasheyenbrock`,
       twitter: `heyenbrock`,
     },
   },
