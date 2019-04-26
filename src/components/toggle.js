@@ -4,6 +4,10 @@ import styled, { ThemeContext } from "styled-components"
 const StyledSvg = styled.svg`
   color: ${props => props.theme.colors.grey[50]};
   cursor: pointer;
+  &:hover {
+    transform: ${props => props.theme.transform._1_1};
+    transition: ${props => props.theme.transition};
+  }
 `
 
 const StyledCircle = styled.circle`

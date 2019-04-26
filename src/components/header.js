@@ -36,6 +36,9 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   color: inherit;
   background-image: none;
+  &:hover {
+    transform: ${props => props.theme.transform._1_1};
+  }
 `
 
 const StyledHomeLink = styled(StyledLink)`

@@ -104,6 +104,11 @@ const colors = {
 
 const transition = "all 0.2s ease-in-out"
 
+const transform = {
+  _1_03: "scale(1.03)",
+  _1_1: "scale(1.1)",
+}
+
 const code = {
   attrName: colors.yellow[600],
   attrValue: colors.green[600],
@@ -129,6 +134,7 @@ const baseTheme = {
   code,
   colors,
   mobileBreakpoint,
+  transform,
   transition,
 }
 
@@ -150,6 +156,10 @@ const lightTheme = {
     background: colors.blue[200],
     color: colors.grey[900],
   },
+  home: {
+    cards: [colors.green[200], colors.yellow[200], colors.red[200]],
+    color: colors.grey[900],
+  },
 }
 
 const darkTheme = {
@@ -168,6 +178,10 @@ const darkTheme = {
   },
   header: {
     background: colors.blue[600],
+    color: colors.grey[50],
+  },
+  home: {
+    cards: [colors.green[700], colors.yellow[700], colors.red[700]],
     color: colors.grey[50],
   },
 }

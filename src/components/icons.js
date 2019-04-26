@@ -6,6 +6,10 @@ import { rhythm } from "../utils/typography"
 const StyledSvg = styled.svg`
   height: ${rhythm(1)};
   width: ${rhythm(1)};
+  &:hover {
+    transform: ${props => props.theme.transform._1_1};
+    transition: ${props => props.theme.transition};
+  }
 `
 
 export const EmailIcon = () => {

@@ -12,6 +12,10 @@ const StyledDivider = styled.hr`
   background-color: ${props => props.theme.body.color};
 `
 
+const StyledImage = styled(Image)`
+  border-radius: 50%;
+`
+
 const About = ({ data }) => (
   <>
     <SEO
@@ -27,10 +31,9 @@ const About = ({ data }) => (
     />
     <StyledHeading>Who am I?</StyledHeading>
     <p>
-      My name is Thomas. I live in Wasserburg am Inn, the most beautiful city in
-      the world!
+      My name is Thomas. I live in Wasserburg am Inn, a beautiful city in
+      Bavaria in southern Germany.
     </p>
-    <p>Where is that, you ask? It's located in Bavaria in southern Germany.</p>
     <StyledHeading>What am I?</StyledHeading>
     <p>
       I am currently working as Data Scientist at{" "}
@@ -92,7 +95,10 @@ const About = ({ data }) => (
       skiing in particular. I'm also a qualified skiing teacher of the highest
       level.
     </p>
-    <Image fluid={data.skiingPicture.childImageSharp.fluid} alt="skiing" />
+    <StyledImage
+      fluid={data.skiingPicture.childImageSharp.fluid}
+      alt="skiing"
+    />
     <StyledDivider />
     <p>
       Got some questions for me? Feel free to get in touch via{" "}
